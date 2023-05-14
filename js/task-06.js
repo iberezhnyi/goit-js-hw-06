@@ -1,25 +1,37 @@
-const inputEl = document.querySelector("#validation-input");
+const input = document.querySelector("#validation-input");
 
-const onBlurEvent = function (event) {
-  const inputValueLength = event.currentTarget.value.length;
-  const requiredInputValueLength = Number(event.currentTarget.dataset.length);
+const REQUIRED_INPUT_LENGTH = Number(input.dataset.length);
 
-  if (inputValueLength === requiredInputValueLength) {
-    inputEl.classList.remove("invalid");
-    inputEl.classList.add("valid");
-  } else {
-    inputEl.classList.remove("valid");
-    inputEl.classList.add("invalid");
+input.addEventListener("blur", onInputBlur);
+
+function onInputBlur(evt) {
+  const inputValueLength = evt.currentTarget.value.length;
+
+  if (inputValueLength !== REQUIRED_INPUT_LENGTH) {
+    input.classList.remove("valid");
+    input.classList.add("invalid");
+    return;
   }
-};
 
-inputEl.addEventListener("blur", onBlurEvent);
+  input.classList.remove("invalid");
+  input.classList.add("valid");
+}
 
-// Напиши скрипт, який під час втрати фокусу на інпуті(подія blur),
-// перевіряє його вміст щодо правильної кількості введених символів.
+// ===========================================
 
-// Яка кількість смиволів повинна бути в інпуті, зазначається в його атрибуті data-length.
-// Якщо введена правильна кількість символів, то border інпуту стає зеленим,
-// якщо неправильна кількість - червоним.
-// Для додавання стилів використовуй CSS - класи valid і invalid,
-// які ми вже додали у вихідні файли завдання.
+// const input = document.querySelector("#validation-input");
+
+// const REQUIRED_INPUT_LENGTH = Number(input.dataset.length);
+
+// input.addEventListener("blur", onInputBlur);
+
+// function onInputBlur() {
+//   if (input.value.length !== REQUIRED_INPUT_LENGTH) {
+//     input.classList.remove("valid");
+//     input.classList.add("invalid");
+//     return;
+//   }
+
+//   input.classList.remove("invalid");
+//   input.classList.add("valid");
+// }

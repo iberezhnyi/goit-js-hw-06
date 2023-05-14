@@ -13,12 +13,24 @@ const images = [
   },
 ];
 
-const galleryEl = document.querySelector(".gallery");
+const galleryRef = document.querySelector(".gallery");
 
-const makeGalleryItemMarkup = ({ url, alt }) => {
-  return `<li class="gallery-item"><img class="gallery-image" src="${url}" alt="${alt}"></li>`;
-};
+const makeGalleryMarkupStr = ({ url, alt }) =>
+  `<li class="gallery-item"><img class="gallery-image" src="${url}" alt="${alt}"></li>`;
 
-const makeGalleryMarkup = images.map(makeGalleryItemMarkup).join("");
+const makeGalleryMarkup = images.map(makeGalleryMarkupStr).join("");
 
-galleryEl.insertAdjacentHTML("afterbegin", makeGalleryMarkup);
+galleryRef.insertAdjacentHTML("afterbegin", makeGalleryMarkup);
+
+// ====================================================================================
+
+// const galleryRef = document.querySelector(".gallery");
+
+// const markup = images
+//   .map(
+//     ({ url, alt }) =>
+//       `<li class="gallery-item"><img class="gallery-image" src="${url}" alt="${alt}"></li>`
+//   )
+//   .join("");
+
+// galleryRef.insertAdjacentHTML("beforeend", markup);
